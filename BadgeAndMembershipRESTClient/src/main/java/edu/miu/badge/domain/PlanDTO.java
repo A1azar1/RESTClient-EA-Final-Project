@@ -1,8 +1,6 @@
 package edu.miu.badge.domain;
 
-import edu.miu.badge.domains.Location;
-import edu.miu.badge.domains.PlanType;
-import edu.miu.badge.domains.Role;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,6 +1,6 @@
 package edu.miu.badge.domain;
 
-import edu.miu.badge.domains.Badge;
+
 import edu.miu.badge.enumeration.BadgeStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -9,7 +9,7 @@ import java.util.List;
  * @author Daniel Tsegay Meresie
  */
 
-@Setter @Getter @AllArgsConstructor
+@Data@AllArgsConstructor
 @NoArgsConstructor @ToString
 public class LocationDTO {
     private Long locationId;

@@ -1,10 +1,7 @@
 package edu.miu.badge.domain;
 
 import edu.miu.badge.enumeration.LocationType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -13,8 +10,7 @@ import java.util.List;
  * @author Daniel Tsegay Meresie
  */
 
-@Setter
-@Getter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 

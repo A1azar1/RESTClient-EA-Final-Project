@@ -1,14 +1,10 @@
 package edu.miu.badge.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResponseMembershipDTO {
@@ -19,4 +15,17 @@ public class ResponseMembershipDTO {
     private Plan plan;
     private PlanType planType;
     private int numberOfAllowance;
+
+    @Override
+    public String toString() {
+        return "{\"ResponseMembershipDTO\":{"
+                + "                        \"\nid\":\"" + id + "\""
+                + ",                         \"\nstartDate\":" + startDate
+                + ",                         \"\nendDate\":" + endDate
+                + ",                         \"\nmember\":" + member
+                + ",                         \"\nplan\":" + plan
+                + ",                         \"\nplanType\":" + planType
+                + ",                         \"\nnumberOfAllowance\":\"" + numberOfAllowance + "\""
+                + "}}";
+    }
 }

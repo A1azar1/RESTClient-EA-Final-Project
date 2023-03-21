@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
  *
  * @author Daniel Tsegay Meresie
  */
-@Setter @Getter @AllArgsConstructor
+@Data @AllArgsConstructor
 @NoArgsConstructor @ToString
 public class TimeSlotDTO {
     private LocalDateTime startTime;

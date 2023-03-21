@@ -1,9 +1,6 @@
 package edu.miu.badge.domain;
 
-import edu.miu.badge.domains.Location;
-import edu.miu.badge.domains.Member;
-import edu.miu.badge.domains.Membership;
-import edu.miu.badge.domains.Transaction;
+
 import edu.miu.badge.enumeration.TransactionType;
 import lombok.AllArgsConstructor;
 import lombok.Data;

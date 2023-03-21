@@ -4,15 +4,10 @@ package edu.miu.badge.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import edu.miu.badge.enumeration.BadgeStatus;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Badge {

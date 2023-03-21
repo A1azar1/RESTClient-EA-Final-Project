@@ -1,5 +1,6 @@
 package edu.miu.badge.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,6 +14,5 @@ import java.util.List;
 public class RolesDTO {
     private int id;
     private String roleType;
-    @JsonIgnore
     private List<ResponseMemberDTO> member;
 }
