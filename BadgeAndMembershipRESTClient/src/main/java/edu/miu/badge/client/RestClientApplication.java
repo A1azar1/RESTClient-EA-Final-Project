@@ -63,7 +63,7 @@ public class RestClientApplication implements CommandLineRunner {
 		Thread.sleep(1000);
 		System.out.println("Scanning Minalu's Badge");
 		Thread.sleep(200);
-		
+
 
 
 	}
