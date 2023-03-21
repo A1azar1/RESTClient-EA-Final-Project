@@ -1,13 +1,12 @@
 package edu.miu.badge.domain;
 
 import edu.miu.badge.enumeration.BadgeStatus;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 @NoArgsConstructor
-public class BadgeRequest {
+public class RequestBadgeDTO {
     private BadgeStatus badgeStatus;
     private int memberId;
 }

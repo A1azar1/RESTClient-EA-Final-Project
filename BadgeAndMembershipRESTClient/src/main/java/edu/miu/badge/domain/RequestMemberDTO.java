@@ -1,5 +1,6 @@
 package edu.miu.badge.domain;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class MemberRequest {
+public class RequestMemberDTO {
     private String firstName;
     private String lastName;
     private String email;
