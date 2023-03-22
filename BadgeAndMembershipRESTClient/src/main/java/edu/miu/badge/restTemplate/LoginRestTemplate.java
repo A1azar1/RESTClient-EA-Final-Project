@@ -14,7 +14,7 @@ public class LoginRestTemplate {
     RestTemplate restTemplate;
     @Value("${baseURL}")
     private String baseURL;
-    private final String serverUrl = baseURL + "/authentication";
+    private final String serverUrl = baseURL + "/users/login";
 
     public ResponseMemberDTO login(String username, String password) {
         RequestUserDTO user = new RequestUserDTO();

@@ -2,7 +2,6 @@ package edu.miu.badge.client;
 
 import edu.miu.badge.domain.*;
 import edu.miu.badge.enumeration.PlanTypeEnum;
-import edu.miu.badge.restTemplate.CheckerRestTemplate;
 import edu.miu.badge.restTemplate.LoginRestTemplate;
 import edu.miu.badge.restTemplate.MemberRestTemplate;
 import edu.miu.badge.restTemplate.TransactionRestTemplate;
@@ -22,8 +21,6 @@ import java.util.Scanner;
 public class RestClientApplication implements CommandLineRunner {
     @Autowired
     MemberRestTemplate memberRestTemplate;
-    @Autowired
-    CheckerRestTemplate checkerRestTemplate;
     @Autowired
     LoginRestTemplate loginRestTemplate;
     @Autowired
@@ -61,7 +58,7 @@ public class RestClientApplication implements CommandLineRunner {
                 System.out.println("Invalid username or password");
             } else {
                 Optional<List<ResponseMembershipDTO>> membershipDTOList =
-                        Optional.of(checkerRestTemplate.getAllMembershipOfMember(memberDTO.getId())
+                        Optional.of(memberRestTemplate.getAllMembershipOfMember(memberDTO.getId())
                                 .stream()
                                 .filter(m -> m.getPlanType().getPlanType().equals(PlanTypeEnum.CHECKER)).toList());
                 if (membershipDTOList.get().size() == 0) {
