@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 public class ResponseTransactionDTO {
     private  int id;
     private LocalDateTime date;
-    private Member member;
-    private Membership membership;
-    private Location location;
+    private ResponseMemberDTO member;
+    private ResponseMembershipDTO membership;
+    private LocationDTO location;
     private TransactionType type;
 
     @Override

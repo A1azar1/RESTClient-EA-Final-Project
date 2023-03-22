@@ -14,4 +14,6 @@ public class RequestMemberDTO {
     private String lastName;
     private String email;
     private List<Integer> roles;
+    private String username;
+    private String password;
 }

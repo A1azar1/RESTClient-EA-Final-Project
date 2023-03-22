@@ -1,6 +1,5 @@
 package edu.miu.badge.restTemplate;
 
-import edu.miu.badge.domain.Member;
 import edu.miu.badge.domain.RequestUserDTO;
 import edu.miu.badge.domain.ResponseMemberDTO;
 import org.springframework.beans.factory.annotation.Autowired;
