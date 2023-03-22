@@ -14,18 +14,6 @@ public class ResponseMembershipDTO {
     private ResponseMemberDTO member;
     private ResponsePlanDTO plan;
     private PlanTypeDTO planType;
-    private int numberOfAllowance;
+    private int usedAllowances;
 
-    @Override
-    public String toString() {
-        return "{\"ResponseMembershipDTO\":{"
-                + "                        \"\nid\":\"" + id + "\""
-                + ",                         \"\nstartDate\":" + startDate
-                + ",                         \"\nendDate\":" + endDate
-                + ",                         \"\nmember\":" + member
-                + ",                         \"\nplan\":" + plan
-                + ",                         \"\nplanType\":" + planType
-                + ",                         \"\nnumberOfAllowance\":\"" + numberOfAllowance + "\""
-                + "}}";
-    }
 }

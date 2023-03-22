@@ -4,6 +4,10 @@ import edu.miu.badge.domain.RequestTransactionDTO;
 import edu.miu.badge.domain.ResponseTransactionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -11,11 +15,16 @@ import org.springframework.web.client.RestTemplate;
 public class TransactionRestTemplate {
     @Autowired
     RestTemplate restTemplate;
-    @Value("${baseURL}")
+    @Value("${myserver.url}")
     private String baseURL;
-    private final String serverUrl = baseURL + "/transactions";
 
-    public ResponseTransactionDTO postTransaction(RequestTransactionDTO transaction) {
-        return restTemplate.postForObject(serverUrl, transaction, ResponseTransactionDTO.class);
+
+    public ResponseTransactionDTO postTransaction(RequestTransactionDTO transaction, String token) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization","Bearer "+ token);
+        HttpEntity<Object> entity = new HttpEntity<>(transaction,headers);
+
+        return restTemplate.exchange( baseURL + "/transactions", HttpMethod.POST,
+                entity,ResponseTransactionDTO.class).getBody();
     }
 }
