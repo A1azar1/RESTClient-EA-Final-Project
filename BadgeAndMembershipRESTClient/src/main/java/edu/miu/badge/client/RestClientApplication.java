@@ -1,14 +1,12 @@
 package edu.miu.badge.client;
 
-import edu.miu.badge.domain.Member;
-import edu.miu.badge.domain.ResponseBadgeDTO;
-import edu.miu.badge.domain.ResponseMemberDTO;
-import edu.miu.badge.domain.ResponseMembershipDTO;
+import edu.miu.badge.domain.*;
 import edu.miu.badge.enumeration.BadgeStatus;
 import edu.miu.badge.enumeration.PlanTypeEnum;
 import edu.miu.badge.restTemplate.CheckerRestTemplate;
 import edu.miu.badge.restTemplate.LoginRestTemplate;
 import edu.miu.badge.restTemplate.MemberRestTemplate;
+import edu.miu.badge.restTemplate.TransactionRestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -29,6 +27,8 @@ public class RestClientApplication implements CommandLineRunner {
 	CheckerRestTemplate checkerRestTemplate;
 	@Autowired
 	LoginRestTemplate loginRestTemplate;
+	@Autowired
+	TransactionRestTemplate transactionRestTemplate;
 	public static void main(String[] args) {
 		SpringApplication.run(RestClientApplication.class, args);
 	}
@@ -37,7 +37,32 @@ public class RestClientApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		Scanner scanner = new Scanner(System.in);
-		ResponseMemberDTO memberDTO = loginRestTemplate.login("admin", "admin");
+		System.out.println("Welcome to Badge and Membership System");
+		System.out.println("1. Login");
+		System.out.println("2. Exit");
+		int choice = scanner.nextInt();
+		switch (choice){
+			case 1:
+				login(scanner);
+				break;
+			case 2:
+				System.out.println("Thank you for using Badge and Membership System");
+				break;
+			default:
+				System.out.println("Invalid choice");
+				break;
+		}
+	}
+	public void login(Scanner scanner) throws InterruptedException {
+		System.out.println("Enter username:");
+		String username = scanner.next();
+		System.out.println("Enter password:");
+		String password = scanner.next();
+		ResponseMemberDTO memberDTO = loginRestTemplate.login(username, password);
+		if(memberDTO == null){
+			System.out.println("Invalid username or password");
+			return;
+		}
 		Optional<List<ResponseMembershipDTO>> membershipDTOList =
 				Optional.of(checkerRestTemplate.getAllMembershipOfMember(memberDTO.getId())
 						.stream()
@@ -53,21 +78,26 @@ public class RestClientApplication implements CommandLineRunner {
 		int membershipId = scanner.nextInt();
 		int planId= membershipDTOList.get().stream().filter(m -> m.getId() == membershipId).findFirst().get().getPlan().getId();
 		System.out.println("Choice selected : "+membershipId);
+		System.out.println("Select a location to check badge:");
 		membershipDTOList.ifPresent(membershipDTOS -> {
-			membershipDTOS.forEach(m -> m.getPlan().getLocations()
-					.stream().forEach(l -> System.out.println(l.getLocationId() + " " + l.getLocationName())));
+			membershipDTOS.forEach(m -> m.getPlan().getLocations().forEach(l -> System.out.println(l.getLocationId() + " " + l.getLocationName())));
 		});
 		int locationId = scanner.nextInt();
 		System.out.println("Selected Location : "+locationId);
 		System.out.println("Ready to Scan Badge!!!!");
 		Thread.sleep(1000);
+
 		System.out.println("Scanning Minalu's Badge");
 		Thread.sleep(200);
-
-
+		scanBadge(new RequestTransactionDTO(92158,7,2));
+//		"badgeId" : 92158 ,
+//		planId" : 7,
+//		"locationId" : 2
 
 	}
-
+public void scanBadge(RequestTransactionDTO req){
+	System.out.println(transactionRestTemplate.postTransaction(req));
+}
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
