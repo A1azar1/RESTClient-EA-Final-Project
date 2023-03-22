@@ -53,6 +53,7 @@ public class RestClientApplication implements CommandLineRunner {
 				break;
 		}
 	}
+
 	public void login(Scanner scanner) throws InterruptedException {
 		System.out.println("Enter username:");
 		String username = scanner.next();
@@ -86,16 +87,20 @@ public class RestClientApplication implements CommandLineRunner {
 		System.out.println("Selected Location : "+locationId);
 		System.out.println("Ready to Scan Badge!!!!");
 		Thread.sleep(1000);
-
-		System.out.println("Scanning Minalu's Badge");
-		Thread.sleep(200);
-		scanBadge(new RequestTransactionDTO(92158,7,2));
-//		"badgeId" : 92158 ,
-//		planId" : 7,
-//		"locationId" : 2
-
+		int input = 1;
+		do{
+			Thread.sleep(1000);
+			System.out.println("Input Badge Number: ");
+			int badgeNumber = scanner.nextInt();
+			System.out.println("Scanning !!!!!");
+			scanBadge(new RequestTransactionDTO(badgeNumber,7,2));
+			System.out.println("Press 1 to continue scanning   : Press 0 to exist ");
+			input = scanner.nextInt();
+		}
+		while (input == 1);
+		System.out.println("Thank you for using Badge and Membership System");
 	}
-public void scanBadge(RequestTransactionDTO req){
+	public void scanBadge(RequestTransactionDTO req){
 	System.out.println(transactionRestTemplate.postTransaction(req));
 }
 	@Bean
