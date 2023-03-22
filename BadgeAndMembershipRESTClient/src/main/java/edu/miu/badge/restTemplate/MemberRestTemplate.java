@@ -2,6 +2,7 @@ package edu.miu.badge.restTemplate;
 
 import edu.miu.badge.domain.ResponseBadgeDTO;
 import edu.miu.badge.domain.ResponseMemberDTO;
+import edu.miu.badge.domain.ResponseMembershipDTO;
 import edu.miu.badge.enumeration.BadgeStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,6 +25,10 @@ public class MemberRestTemplate {
     public List<ResponseMemberDTO> getAllMember() {
         ResponseMemberDTO[] members = restTemplate.getForObject(serverUrl, ResponseMemberDTO[].class);
         return Arrays.stream(members).toList();
+    }
+    public List<ResponseMembershipDTO> getAllMembershipOfMember(int memberId) {
+        ResponseMembershipDTO[] memberships = restTemplate.getForObject(serverUrl + "/" + memberId + "/memberships", ResponseMembershipDTO[].class, memberId);
+        return Arrays.stream(memberships).toList();
     }
 
     public Optional<ResponseBadgeDTO> getMemberActiveBadge(int memberId) {
