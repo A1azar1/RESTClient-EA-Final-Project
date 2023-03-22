@@ -2,24 +2,16 @@ package edu.miu.badge.domain;
 
 
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
-
-
 @Data
 @NoArgsConstructor
-public class Plan {
-
+public class ResponsePlanDTO {
     private Integer id;
-
     private String name;
-
     private String description;
-    private List<PlanType> planTypes;
-    private List<Location> locations;
-    private List<Role> allowedRoles;
-
+    private List<PlanTypeDTO> planTypes;
+    private List<LocationDTO> locations;
+    private List<RolesDTO> allowedRoles;
 }

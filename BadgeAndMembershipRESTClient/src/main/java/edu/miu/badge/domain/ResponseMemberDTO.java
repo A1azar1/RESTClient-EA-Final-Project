@@ -13,7 +13,7 @@ public class ResponseMemberDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private List<Role> roles;
-    private List<Badge> badges;
-    private List<Membership> memberships;
+    private List<RolesDTO> roles;
+    private List<ResponseBadgeDTO> badges;
+    private List<RequestMembershipDTO> memberships;
 }

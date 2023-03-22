@@ -11,9 +11,9 @@ public class ResponseMembershipDTO {
     private int id;
     private LocalDate startDate;
     private LocalDate endDate;
-    private Member member;
-    private Plan plan;
-    private PlanType planType;
+    private ResponseMemberDTO member;
+    private ResponsePlanDTO plan;
+    private PlanTypeDTO planType;
     private int numberOfAllowance;
 
     @Override

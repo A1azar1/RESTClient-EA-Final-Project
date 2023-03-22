@@ -9,7 +9,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PlanType {
+public class PlanTypeDTO {
 
     private Integer id;
     private PlanTypeEnum planType;
