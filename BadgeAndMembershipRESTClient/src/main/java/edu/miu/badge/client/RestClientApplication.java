@@ -83,7 +83,9 @@ public class RestClientApplication implements CommandLineRunner {
                     int planId = membershipDTOList.stream().filter(m -> m.getId() == membershipId).findFirst().get().getPlan().getId();
                     System.out.println("Membership selected: " + membershipId);
                     System.out.println("Select a location to check badge:");
-                    membershipDTOList.forEach(m -> m.getPlan().getLocations().forEach(l -> System.out.println(l.getLocationId() + " " + l.getLocationName())));
+                    membershipDTOList.stream().filter(ms -> ms.getId() == membershipId)
+                            .findFirst().get().getPlan().getLocations().stream()
+                            .forEach(l -> System.out.println(l.getLocationId() + " " + l.getLocationName() ));
                     int locationId = scanner.nextInt();
                     System.out.println("Selected Location : " + locationId);
                     System.out.println("Ready to Scan Badge!!!!");
